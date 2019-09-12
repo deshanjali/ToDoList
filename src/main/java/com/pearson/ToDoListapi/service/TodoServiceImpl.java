@@ -9,12 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-//import com.google.api.client.util.DateTime;
-//import com.google.api.services.calendar.Calendar;
-//import com.google.api.services.calendar.model.Event;
-//import com.google.api.services.calendar.model.EventAttendee;
-//import com.google.api.services.calendar.model.EventDateTime;
-//import com.google.api.services.calendar.model.EventReminder;
+import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.Calendar;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventAttendee;
+import com.google.api.services.calendar.model.EventDateTime;
+import com.google.api.services.calendar.model.EventReminder;
 import com.pearson.ToDoListapi.model.Todo;
 import com.pearson.ToDoListapi.repository.TodoRepository;
 
