@@ -24,7 +24,5 @@ public interface TodoService {
 	List<Todo> getToDosByUid(String id);
 
 	void settingUserId(Object principal);
-	
-	void createCalendar();
 
 }
