@@ -1,10 +1,13 @@
 package com.pearson.ToDoListapi.resource;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.Principal;
 import java.util.List;
-
-
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +59,7 @@ public class TodoController {
 	}
 	
 	@PutMapping("/{id}")
-	public Todo updateUser(@PathVariable("id") final ObjectId id,@RequestBody final Todo toDo) {
+	public Todo updateTodo(@PathVariable("id") final ObjectId id,@RequestBody final Todo toDo) {
 		return todoService.updateToDo(id, toDo);
 	}
 	
@@ -73,4 +76,27 @@ public class TodoController {
 
         return null;
     }
+	
+	@GetMapping("/countries")
+	public static String getCountries() throws IOException {
+		URL url;
+			url = new URL("https://restcountries.eu/rest/v2/all");
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Content-Type", "application/json");
+			con.setInstanceFollowRedirects(false);
+			int status = con.getResponseCode();
+			BufferedReader in = new BufferedReader(
+					  new InputStreamReader(con.getInputStream()));
+					String inputLine;
+					StringBuffer content = new StringBuffer();
+					while ((inputLine = in.readLine()) != null) {
+					    content.append(inputLine);
+					}
+					in.close();
+					System.out.println(status);
+					con.disconnect();
+			return content.toString();
+		
+	}
 }
